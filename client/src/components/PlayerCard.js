@@ -1,5 +1,5 @@
 import React from "react";
-import { useSearches } from "../hooks";
+import { useSearches, useHoverStyles } from "../hooks";
 import styled from "styled-components";
 
 const StyledPlayerCard = styled.div`
@@ -8,11 +8,12 @@ const StyledPlayerCard = styled.div`
     margin: 1rem auto;
 `;
 
-export default function PlayerCard({player, label}) {
+export default function PlayerCard({player}) {
     const [searches, toggleSearches] = useSearches();
+    const [hoverStyles, toggleHoverStyles] = useHoverStyles();
 
     return (
-        <StyledPlayerCard onClick={toggleSearches} label={label}>
+        <StyledPlayerCard onClick={toggleSearches} onMouseOver={toggleHoverStyles} onMouseLeave={toggleHoverStyles} style={hoverStyles}>
             <h1>{player.name}</h1>
             <h2>{player.country}</h2>
 
