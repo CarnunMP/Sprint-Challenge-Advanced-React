@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import axios from "axios";
 
+import PlayerCard from "./components/PlayerCard";
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -27,10 +29,7 @@ export default class App extends React.Component {
     return (
       <div className="App">
         {players.map(player => (
-          <div className="player-card">
-            <h1>{player.name}</h1>
-            <h2>{player.country}</h2>
-          </div>
+          <PlayerCard player={player} />
         ))}
       </div>
     );
