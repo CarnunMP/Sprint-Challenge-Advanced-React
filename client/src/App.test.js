@@ -5,14 +5,28 @@ import '@testing-library/jest-dom/extend-expect';
 
 import App from './App';
 import PlayerCard from "./components/PlayerCard";
+import Axios from 'axios';
 
 let dummyCard;
 const dummyPlayer = {
   name: "Carmen Marcus-Page",
   country: "United Kingdom",
-  searches: 500,
+  searches: 666,
   id: 42,
 }
+
+jest.mock("axios", () => {
+  return {
+    get: () => {
+      return Promise.resolve({
+        data: [
+          { name: "Carmen Marcus-Page", country: "United Kingdom", searches: 666, id: 42}
+          // How might I use this simulated response as my dummyPlayer?
+        ],
+      });
+    },
+  };
+});
 
 beforeEach(() => {
   rtl.cleanup();
