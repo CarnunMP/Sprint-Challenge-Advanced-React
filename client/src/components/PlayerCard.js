@@ -8,11 +8,11 @@ const StyledPlayerCard = styled.div`
     margin: 1rem auto;
 `;
 
-export default function PlayerCard({player}) {
+export default function PlayerCard({player, label}) {
     const [searches, toggleSearches] = useSearches();
 
     return (
-        <StyledPlayerCard onClick={toggleSearches}>
+        <StyledPlayerCard onClick={toggleSearches} label={label}>
             <h1>{player.name}</h1>
             <h2>{player.country}</h2>
 
