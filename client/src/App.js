@@ -22,9 +22,16 @@ export default class App extends React.Component {
   }
 
   render() {
+    const {players} = this.state;
+
     return (
       <div className="App">
-
+        {players.map(player => (
+          <div className="player-card">
+            <h1>{player.name}</h1>
+            <h2>{player.country}</h2>
+          </div>
+        ))}
       </div>
     );
   }
