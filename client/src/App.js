@@ -16,11 +16,7 @@ export default class App extends React.Component {
     axios.get("http://localhost:5000/api/players")
       .then(res => {
         this.setState({players: res.data});
-        console.log(this.state);
       })
-      .catch(err => {
-        debugger
-      });
   }
 
   render() {
@@ -28,9 +24,10 @@ export default class App extends React.Component {
 
     return (
       <div className="App">
-        {players.map(player => (
-          <PlayerCard player={player} />
+        {players !== [] && players.map(player => (
+          <PlayerCard player={player} key={player.id}/>
         ))}
+        {players !== [] && <h1>Can't load players...</h1>}
       </div>
     );
   }
